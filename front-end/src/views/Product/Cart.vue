@@ -14,15 +14,19 @@
                             <img :src="cartItem.product.imageURL" :alt="cartItem.product.name" class="w-full max-w-[100px] md:min-w-[18rem] md:max-w-[18rem]">
                         </div>
                         <!-- display name ,quantity -->
-                        <div class="flex flex-col justify-center">
-                            <div class="ml-2 w-full">
+                        <div class="flex flex-col justify-center w-1/2">
+                            <div class="ml-2">
                                 <div>
-                                    <h6 class="text-ellipsis whitespace-nowrap w-32 overflow-hidden">{{ cartItem.product.name }}</h6>
+                                    <router-link class="text-blue-500 underline w-full" :to="{name:'ShowDetails',params:{id:cartItem.product.id}}">
+                                        <h6 class="flex w-full">
+                                            {{ cartItem.product.name }}
+                                        </h6>
+                                    </router-link>
                                     <br>
-                                    <p id="item-price" class="font-bold text-start">
+                                    <p id="item-price" class="font-bold flex">
                                             {{ cartItem.product.price }}€ l'unité
                                     </p>
-                                    <p class="float-left mr-2">
+                                    <p class="float-left">
                                         Quantity:{{ cartItem.quantity }} 
                                     </p>
                                 </div>
@@ -34,7 +38,7 @@
                                 </p>
                                 <br>
                                 <a href="#" @click="deleteItem(cartItem.id)" class="text-black w-full  hover:underline decoration-red-500 underline-offset-4">
-                                    <h6 class="text-start w-full">Remove from cart</h6>
+                                    <h6 class="flex w-full">Remove from cart</h6>
                                 </a>
                             </div>
                         </div>
