@@ -12,8 +12,8 @@
           <div class="relative m-auto text-gray-600 w-full  max-w-[200px] md:max-w-full">
               <input class="mr-2 border-2 border-gray-300 bg-white h-10 md:min-w-[400px] px-2 md:px5  md:pr-16 rounded-lg text-sm focus:outline-none"
                 type="search" name="search" placeholder="Search">
-              <button type="submit" class="absolute  bottom-3  mr-4 left-[10rem] top-2 md:left-[10.5rem]">
-                <font-awesome-icon :icon="['fas', 'magnifying-glass']" class="text-black ml-2"/>
+              <button type="submit" class="absolute hidden md:flex top-[0px]  md:left-[22.1rem] bg-orange-500 w-12 h-full rounded-r-lg">
+                <font-awesome-icon :icon="['fas', 'magnifying-glass']" class="text-black  w-full self-center"/>
               </button>
           </div>
         </form>
