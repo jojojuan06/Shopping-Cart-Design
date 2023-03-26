@@ -7,14 +7,14 @@
                 </h3>
             </div>
             <!-- loop items -->
-            <div class="flex w-full  pt-4 flex-col">
+            <div class="flex w-full  pt-4 flex-col justify-center">
                 <div v-for="cartItem in cartItems" :key="cartItem.id" class="flex w-full justify-center flex-col">
-                    <div class="flex w-full justify-center">
-                        <div>
-                            <img :src="cartItem.product.imageURL" :alt="cartItem.product.name" class="w-full max-w-[100px] md:min-w-[18rem] md:max-w-[18rem]">
+                    <div class="flex w-full justify-center flex-col md:flex-row">
+                        <div class="justify-center">
+                            <img :src="cartItem.product.imageURL" :alt="cartItem.product.name" class="m-auto w-full max-w-[100px] md:min-w-[18rem] md:max-w-[18rem]">
                         </div>
                         <!-- display name ,quantity -->
-                        <div class="flex flex-col justify-center w-1/2">
+                        <div class="flex flex-col justify-center  w-full md:w-1/2">
                             <div class="ml-2">
                                 <div>
                                     <router-link class="text-blue-500 underline w-full" :to="{name:'ShowDetails',params:{id:cartItem.product.id}}">
