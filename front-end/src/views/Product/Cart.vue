@@ -54,7 +54,7 @@
                         <span class="font-bold">
                         Total : 
                         </span> 
-                        €{{ totalCost }}
+                        €{{ totalCost.toFixed(2) }}
                         </h5>
                     </div>
                 </div>

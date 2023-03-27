@@ -107,11 +107,14 @@ methods: {
   signout(){
       localStorage.removeItem('token');
       this.token = null;
-      windows.location = "http://localhost:5173/";
-      swal.apply({
+      swal({
         text: "Logged you out. Visit again!",
         icon:"success"
       })
+      //recupere l'evenement avec emit reset la cart a zero
+      this.$emit("resetcartCount");
+      //retour a la page d'accueil
+      this.$router.push({path:'/'})
   }
 },
 mounted()  {

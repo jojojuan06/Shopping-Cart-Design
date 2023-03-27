@@ -1,7 +1,7 @@
 
 <template>
   <header class="flex w-full">
-      <nav-bar  :cartCount="cartCount"></nav-bar>
+      <nav-bar  :cartCount="cartCount" @resetcartCount="resetcartCount"></nav-bar>
   </header>
   <main class="flex flex-col h-full grow">
       <div class="flex min-h-screen  items-center ">
@@ -69,6 +69,9 @@ import axios from 'axios';
             }).catch((err) => console.log("err",err));
         }
       },
+      resetcartCount(){
+        this.cartCount = 0;
+      }
     },
     mounted() {
       this.token = localStorage.getItem("token");

@@ -60,28 +60,19 @@ export default {
 				password: this.password,
 			}
 			console.log("body",body);
-			axios.post(`${this.baseURL}user/signIn`,body,
+			await axios.post(`${this.baseURL}user/signIn`,body,
 			this.headers,this.credentials)
 			.then((res)=>{
-				this.$router.push("/");
 				//set le token dans le storage
 				localStorage.setItem("token", res.data.token)
 				sweetalert({
 					text:"Connexion reussi avec success",
 					icon:"success",
-				})
-				setTimeout(() => {
-					this.$router.go(0);
-				}, 1500);
-				
-				
-			}).catch(err =>{
-				console.log(err);
-				swal({
-				text: "passwors dont match",
-				icon: "error"
 				});
-			})
+				//recupere le nombre d'items ainsi que produit et category
+				this.$emit("fetchData")
+				window.location = "http://localhost:5173/"
+			}).catch((err)=>console.log(err));
 		}
 	},
 }
