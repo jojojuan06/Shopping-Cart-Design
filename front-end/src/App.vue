@@ -9,7 +9,9 @@
           :baseURL="baseURL" 
           :categories="categories" 
           :products="products"
-          @fetchData = "fetchData">
+          @fetchData = "fetchData"
+          :cartCount = "cartCount"
+          >
           </router-view>
       </div>
   </main>

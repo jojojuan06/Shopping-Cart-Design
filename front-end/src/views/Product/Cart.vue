@@ -8,6 +8,20 @@
             </div>
             <!-- loop items -->
             <div class="flex w-full  pt-4 flex-col justify-center">
+            <div v-if="cartCount < 1" class="h-screen w-full flex flex-col items-center justify-center">
+                    <img src="../../assets/images/empty-cart.png" class="w-1/2" alt="">
+                    <h2 class="font-bold">Votre Panier Vide</h2>
+                    <br>
+                    <router-link :to="{name:'AdminProduct'}">
+                        <h3 class="text-gray-600 font-bold flex items-center">
+                            <span class="text-[2rem] mr-2 mb-2">
+                                &rarr;
+                                </span> 
+                                Nos produit 
+                                <span class="text-[2rem] ml-2 mb-2">&larr;</span>
+                                </h3>
+                    </router-link>
+                </div>
                 <div v-for="cartItem in cartItems" :key="cartItem.id" class="flex w-full justify-center flex-col">
                     <div class="flex w-full justify-center flex-col md:flex-row">
                         <div class="justify-center">
@@ -84,7 +98,7 @@ export default {
             }
         }
     },
-    props:["baseURL"],
+    props:["baseURL","cartCount"],
     methods: {
         //fetch all items in cart
         listCartitems(){
