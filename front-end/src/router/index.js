@@ -13,10 +13,17 @@ import Signup from '../views/Signup.vue';
 import Signin from '../views/Signin.vue';
 import WishList from "../views/Product/WishList.vue";
 import Cart from "../views/Product/Cart.vue";
+import PageNotFound from '../components/PageNotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // si aucun page match , n'est trouve alors il retourne la route 404
+    {
+      path: '/:patchMatch(.*)*',
+      name: 'NotFound',
+      component: PageNotFound
+    },
     {
       path: '/',
       name: 'home',
