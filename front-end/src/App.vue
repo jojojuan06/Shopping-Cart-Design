@@ -1,7 +1,7 @@
 
 <template>
   <header class="flex w-full">
-      <nav-bar></nav-bar>
+      <nav-bar  :cartCount="cartCount"></nav-bar>
   </header>
   <main class="flex flex-col h-full grow">
       <div class="flex min-h-screen  items-center ">
@@ -16,8 +16,8 @@
   <footer-vue></footer-vue>
 </template>
 
-  <script>
-  import FooterVue from './components/FooterVue.vue';
+<script>
+import FooterVue from './components/FooterVue.vue';
 import NavBar from './components/navBar.vue';
 import axios from 'axios';
 
@@ -31,7 +31,18 @@ import axios from 'axios';
       return {
         baseURL:'https://limitless-lake-55070.herokuapp.com/',
         products:null,
-        categories:null
+        categories:null,
+        cartCount:0,
+        headers: { 
+                headers : {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Methods':'GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With',
+                }},
+        credentials:{
+          credentials:true
+        }
       }
     },
     methods: {
@@ -48,11 +59,19 @@ import axios from 'axios';
           this.products = res.data
         })
         .catch((err) => console.log('err',err));
-        
-        
+        // fetch data cart item if token is present logged in
+        if (this.token) {
+          axios.get(`${this.baseURL}cart/?token=${this.token}`,this.headers,this.credentials)
+            .then((res) =>{
+                const result = res.data;
+                //recupere le nombre d'items
+                this.cartCount = result.cartItems.length;
+            }).catch((err) => console.log("err",err));
+        }
       },
     },
     mounted() {
+      this.token = localStorage.getItem("token");
       this.fetchData();
     },
   }

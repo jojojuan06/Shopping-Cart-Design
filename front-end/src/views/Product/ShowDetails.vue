@@ -129,6 +129,8 @@ export default {
                         text: "Added to cart. Please continue",
                         icon: "success"
                     });
+                    //recuperer les information des produit avec emit
+                    this.$emit('fetchData')
                 }
             }).catch((err) => console.log("err",err));
         }

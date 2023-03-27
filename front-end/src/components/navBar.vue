@@ -21,7 +21,8 @@
       </div>
       <div tabindex="1" class="flex flex-row-reverse mr-12  md:mr-0 relative  mt-2">
         <div class="h-full self-center hidden md:flex md:pr-2">
-          <a href="/cart">
+          <a href="/cart" class="relative">
+            <span class="bg-red-500 absolute bottom-3 right-[0.5px] rounded-[100%] px-[4px] py-[0.5px] text-white text-xs ">{{cartCount}}</span>
             <font-awesome-icon :icon="['fas', 'cart-shopping']" class="text-white ml-2"/>
           </a>
         </div>
@@ -70,6 +71,7 @@
             <li class="flex md:hidden">
               <a href="/cart">
                 <font-awesome-icon :icon="['fas', 'cart-shopping']" class="text-white"/>
+                <span class="ml-2 bg-red-500  rounded-[100%] px-[4px] py-[0.5px] text-white text-xs ">{{ cartCount }}</span>
               </a>
             </li>
           </ul>
@@ -79,8 +81,11 @@
 </template>
 
 <script>
+import swal from 'sweetalert';
 export default {
 name:'navbar',
+// badge cart
+props:["cartCount"],
 data() {
     return {
         selected:false,
@@ -103,6 +108,10 @@ methods: {
       localStorage.removeItem('token');
       this.token = null;
       windows.location = "http://localhost:5173/";
+      swal.apply({
+        text: "Logged you out. Visit again!",
+        icon:"success"
+      })
   }
 },
 mounted()  {
