@@ -63,6 +63,7 @@ export default {
     }
   },
   name:"AddCategory",
+  props : ["baseURL", "categories"],
   methods: {
     addCategory() {
       const newCategory = {
@@ -70,10 +71,9 @@ export default {
         descriptio:this.description,
         imageUrl:this.imageUrl
       }
-      const baseURL = "https://limitless-lake-55070.herokuapp.com";
       axios ({
         method:"post",
-        url:`${baseURL}/category/create`,
+        url:`${this.baseURL}/category/create`,
         data: JSON.stringify(newCategory),
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -91,6 +91,12 @@ export default {
           console.log(err);
       })
     },
+  },
+  mounted(){
+    //verifier que l'utilisateur est connecter
+    if (!localStorage.getItem('token')) {
+      this.$router.push({name : 'Signin'});
+    }
   }
 }
 </script>

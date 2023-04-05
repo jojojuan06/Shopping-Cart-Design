@@ -97,10 +97,9 @@
                     imageURL: this.imageUrl,
                     price: this.price,
                 }
-                const baseURL = "https://limitless-lake-55070.herokuapp.com";
                 axios ({
                     method:"post",
-                    url:`${baseURL}/product/add`,
+                    url:`${this.baseURL}/product/add`,
                     data: JSON.stringify(newProduct),
                     headers:{
                         'Access-Control-Allow-Origin': '*',
@@ -122,6 +121,11 @@
                     console.log(err);
                 })
             },    
-        }
+        },
+    mounted() {
+        if (!localStorage.getItem('token')) {
+            this.$router.push({name : 'Signin'});
+    }
+    }
     }
 </script>

@@ -31,7 +31,8 @@ import axios from 'axios';
     },
     data() {
       return {
-        baseURL:'https://limitless-lake-55070.herokuapp.com/',
+        //baseURL:'https://limitless-lake-55070.herokuapp.com/',
+        baseURL:'http://localhost:8080/',
         products:null,
         categories:null,
         cartCount:0,

@@ -9,7 +9,7 @@
             <!-- loop items -->
             <div class="flex w-full  pt-4 flex-col justify-center">
             <div v-if="cartCount < 1" class="h-screen w-full flex flex-col items-center justify-center">
-                    <img src="../../assets/images/empty-cart.png" class="w-1/2" alt="">
+                    <img src="../../assets/images/empty-cart.png" class="w-1/3" alt="">
                     <h2 class="font-bold">Votre Panier Vide</h2>
                     <br>
                     <router-link :to="{name:'AdminProduct'}">

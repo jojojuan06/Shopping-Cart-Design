@@ -55,23 +55,24 @@ export default {
 	methods: {
 		async signin(){
 			//call signin api
-			const body =  { 
+			const user =  { 
 				email: this.email,
 				password: this.password,
-			}
-			console.log("body",body);
-			await axios.post(`${this.baseURL}user/signIn`,body,
+			};
+			console.log("user",user);
+			await axios
+			.post(`${this.baseURL}user/signin`, user,
 			this.headers,this.credentials)
 			.then((res)=>{
 				//set le token dans le storage
-				localStorage.setItem("token", res.data.token)
+				localStorage.setItem("token", res.data.token);
 				sweetalert({
 					text:"Connexion reussi avec success",
 					icon:"success",
 				});
 				//recupere le nombre d'items ainsi que produit et category
 				this.$emit("fetchData")
-				window.location = "http://localhost:5173/"
+				window.location = "http://localhost:8081/"
 			}).catch((err)=>console.log(err));
 		}
 	},

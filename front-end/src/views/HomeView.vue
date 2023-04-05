@@ -56,7 +56,8 @@ export default {
     data() {
         return {
             categorySize:0,
-            productSize:0
+            productSize:0,
+            token:null
         }
     },
     mounted() {
